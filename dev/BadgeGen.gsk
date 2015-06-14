@@ -1,5 +1,5 @@
 #*******************************************
-# MacVersion = 3.2.14
+# MacVersion = 3.2.15
 # MacDescription = Generates badges based on your geocaching accomplishments.
 # MacAuthor = ky.m.guy
 # MacFileName = BadgeGen.gsk
@@ -13,6 +13,8 @@
 #-Elevation now uses built in elevation feature of GSAK.
 #-Output CSS modernized
 #-Test run of Nx diamond badges added for 5/5 badge.
+#-Giga events now counted in Mega event total.
+
 
 
 BEGINSUB name=DeclareTotalBadges
