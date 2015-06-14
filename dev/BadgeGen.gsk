@@ -791,7 +791,10 @@ BEGINSUB name=Assignment
 		$EartHTML="$HotLinkURL"+"EartE.png"
 	CASE $Eart>=$EartD
 		$EartLeft = 0
-		$EartHTML="$HotLinkURL"+"EartD.png"
+		$diamond_int_D = $EartD
+		$diamond_int_count = $Eart
+		GOSUB name=diamond_int
+		$EartHTML="$HotLinkURL"+"EartD" + $diamond_int_str + ".png"
 	CASE $Eart=0
 		$EartLeft= $EartB1
 		$EartHTML=""
@@ -824,7 +827,10 @@ BEGINSUB name=Assignment
 		$LettHTML="$HotLinkURL"+"LettE.png"
 	CASE $Lett>=$LettD
 		$LettLeft = 0
-		$LettHTML="$HotLinkURL"+"LettD.png"
+		$diamond_int_D = $LettD
+		$diamond_int_count = $Lett
+		GOSUB name=diamond_int
+		$LettHTML="$HotLinkURL"+"LettD" + $diamond_int_str + ".png"
 	CASE $Lett=0
 		$LettLeft= $LettB1
 		$LettHTML=""
@@ -858,7 +864,10 @@ BEGINSUB name=Assignment
 		$WherHTML="$HotLinkURL"+"WherE.png"
 	CASE $Wher>=$WherD
 		$WherLeft = 0
-		$WherHTML="$HotLinkURL"+"WherD.png"
+		$diamond_int_D = $WherD
+		$diamond_int_count = $Wher
+		GOSUB name=diamond_int
+		$WherHTML="$HotLinkURL"+"WherD" + $diamond_int_str + ".png"
 	CASE $Wher=0
 		$WherLeft= $WherB1
 		$WherHTML=""
@@ -891,7 +900,10 @@ BEGINSUB name=Assignment
 		$MegaHTML="$HotLinkURL"+"MegaE.png"
 	CASE $Mega>=$MegaD
 		$MegaLeft = 0
-		$MegaHTML="$HotLinkURL"+"MegaD.png"
+		$diamond_int_D = $MegaD
+		$diamond_int_count = $Mega
+		GOSUB name=diamond_int
+		$MegaHTML="$HotLinkURL"+"MegaD" + $diamond_int_str + ".png"
 	CASE $Mega=0
 		$MegaLeft= $MegaB1
 		$MegaHTML=""
@@ -924,7 +936,10 @@ BEGINSUB name=Assignment
 		$EvenHTML="$HotLinkURL"+"EvenE.png"
 	CASE $Even>=$EvenD
 		$EvenLeft = 0
-		$EvenHTML="$HotLinkURL"+"EvenD.png"
+		$diamond_int_D = $EvenD
+		$diamond_int_count = $Even
+		GOSUB name=diamond_int
+		$EvenHTML="$HotLinkURL"+"EvenD" + $diamond_int_str + ".png"
 	CASE $Even=0
 		$EvenLeft= $EvenB1
 		$EvenHTML=""
@@ -957,7 +972,10 @@ BEGINSUB name=Assignment
 		$CITOHTML="$HotLinkURL"+"CITOE.png"
 	CASE $CITO>=$CITOD
 		$CITOLeft = 0
-		$CITOHTML="$HotLinkURL"+"CITOD.png"
+		$diamond_int_D = $CITOD
+		$diamond_int_count = $CITO
+		GOSUB name=diamond_int
+		$CITOHTML="$HotLinkURL"+"CITOD" + $diamond_int_str + ".png"
 	CASE $CITO=0
 		$CITOLeft= $CITOB1
 		$CITOHTML=""
@@ -990,7 +1008,10 @@ BEGINSUB name=Assignment
 		$TenyHTML="$HotLinkURL"+"TenyE.png"
 	CASE $Teny>=$TenyD
 		$TenyLeft = 0
-		$TenyHTML="$HotLinkURL"+"TenyD.png"
+		$diamond_int_D = $TenyD
+		$diamond_int_count = $Teny
+		GOSUB name=diamond_int
+		$TenyHTML="$HotLinkURL"+"TenyD" + $diamond_int_str + ".png"
 	CASE $Teny=0
 		$TenyLeft= $TenyB1
 		$TenyHTML=""
@@ -1022,7 +1043,10 @@ BEGINSUB name=Assignment
 		$BencHTML="$HotLinkURL"+"BencE.png"
 	CASE $Benc>=$BencD
 		$BencLeft = 0
-		$BencHTML="$HotLinkURL"+"BencD.png"
+		$diamond_int_D = $BencD
+		$diamond_int_count = $Benc
+		GOSUB name=diamond_int
+		$BencHTML="$HotLinkURL"+"BencD" + $diamond_int_str + ".png"
 	CASE $Benc=0
 		$BencLeft= $BencB1
 		$BencHTML=""
@@ -1054,7 +1078,10 @@ BEGINSUB name=Assignment
 		$WaymHTML="$HotLinkURL"+"WaymE.png"
 	CASE $Waym>=$WaymD
 		$WaymLeft = 0
-		$WaymHTML="$HotLinkURL"+"WaymD.png"
+		$diamond_int_D = $WaymD
+		$diamond_int_count = $Waym
+		GOSUB name=diamond_int
+		$WaymHTML="$HotLinkURL"+"WaymD" + $diamond_int_str + ".png"
 	CASE $Waym=0
 		$WaymLeft= $WaymB1
 		$WaymHTML=""
@@ -1087,7 +1114,10 @@ BEGINSUB name=Assignment
 		$WebcHTML="$HotLinkURL"+"WebcE.png"
 	CASE $Webc>=$WebcD
 		$WebcLeft = 0
-		$WebcHTML="$HotLinkURL"+"WebcD.png"
+		$diamond_int_D = $WebcD
+		$diamond_int_count = $Webc
+		GOSUB name=diamond_int
+		$WebcHTML="$HotLinkURL"+"WebcD" + $diamond_int_str + ".png"
 	CASE $Webc=0
 		$WebcLeft= $WebcB1
 		$WebcHTML=""
@@ -1119,7 +1149,10 @@ BEGINSUB name=Assignment
 		$ApecHTML="$HotLinkURL"+"ApecE.png"
 	CASE $Apec>=$ApecD
 		$ApecLeft = 0
-		$ApecHTML="$HotLinkURL"+"ApecD.png"
+		$diamond_int_D = $ApecD
+		$diamond_int_count = $Apec
+		GOSUB name=diamond_int
+		$ApecHTML="$HotLinkURL"+"ApecD" + $diamond_int_str + ".png"
 	CASE $Apec=0
 		$ApecLeft= $ApecB1
 		$ApecHTML=""
@@ -1187,7 +1220,10 @@ BEGINCASE #Type
 		$MicrHTML="$HotLinkURL"+"MicrE.png"
 	CASE $Micr>=$MicrD
 		$MicrLeft = 0
-		$MicrHTML="$HotLinkURL"+"MicrD.png"
+		$diamond_int_D = $MicrD
+		$diamond_int_count = $Micr
+		GOSUB name=diamond_int
+		$MicrHTML="$HotLinkURL"+"MicrD" + $diamond_int_str + ".png"
 	CASE $Micr=0
 		$MicrLeft= $MicrB1
 		$MicrHTML=""
@@ -1220,7 +1256,10 @@ BEGINCASE #Type
 		$SmalHTML="$HotLinkURL"+"SmalE.png"
 	CASE $Smal>=$SmalD
 		$SmalLeft = 0
-		$SmalHTML="$HotLinkURL"+"SmalD.png"
+		$diamond_int_D = $SmalD
+		$diamond_int_count = $Smal
+		GOSUB name=diamond_int
+		$SmalHTML="$HotLinkURL"+"SmalD" + $diamond_int_str + ".png"
 	CASE $Smal=0
 		$SmalLeft= $SmalB1
 		$SmalHTML=""
@@ -1253,7 +1292,10 @@ BEGINCASE #Type
 		$ReguHTML="$HotLinkURL"+"ReguE.png"
 	CASE $Regu>=$ReguD
 		$ReguLeft = 0
-		$ReguHTML="$HotLinkURL"+"ReguD.png"
+		$diamond_int_D = $ReguD
+		$diamond_int_count = $Regu
+		GOSUB name=diamond_int
+		$ReguHTML="$HotLinkURL"+"ReguD" + $diamond_int_str + ".png"
 	CASE $Regu=0
 		$ReguLeft= $ReguB1
 		$ReguHTML=""
@@ -1286,7 +1328,10 @@ BEGINCASE #Type
 		$LargHTML="$HotLinkURL"+"LargE.png"
 	CASE $Larg>=$LargD
 		$LargLeft = 0
-		$LargHTML="$HotLinkURL"+"LargD.png"
+		$diamond_int_D = $LargD
+		$diamond_int_count = $Larg
+		GOSUB name=diamond_int
+		$LargHTML="$HotLinkURL"+"LargD" + $diamond_int_str + ".png"
 	CASE $Larg=0
 		$LargLeft= $LargB1
 		$LargHTML=""
@@ -1357,7 +1402,11 @@ BEGINCASE #Type
 		$CounHTML="$HotLinkURL"+"CounE.png"
 	CASE $Coun>=$CounD
 		$CounLeft = 0
-		$CounHTML="$HotLinkURL"+"CounD.png"
+		$diamond_int_D = $CounD
+		$diamond_int_count = $Coun
+		GOSUB name=diamond_int
+		
+		$CounHTML="$HotLinkURL"+"CounD" + $diamond_int_str + ".png"
 	CASE $Coun=0
 		$CounLeft= $CounB1
 		$CounHTML=""
@@ -1390,7 +1439,11 @@ BEGINCASE #Type
 		$FTFHTML="$HotLinkURL"+"FTFE.png"
 	CASE $FTF>=$FTFD
 		$FTFLeft = 0
-		$FTFHTML="$HotLinkURL"+"FTFD.png"
+		$diamond_int_D = $FTFD
+		$diamond_int_count = $FTF
+		GOSUB name=diamond_int
+		
+		$FTFHTML="$HotLinkURL"+"FTFD" + $diamond_int_str + ".png"
 	CASE $FTF=0
 		$FTFLeft= $FTFB1
 		$FTFHTML=""
@@ -1423,7 +1476,11 @@ BEGINCASE #Type
 		$HiddHTML="$HotLinkURL"+"HiddE.png"
 	CASE $Hidd>=$HiddD
 		$HiddLeft = 0
-		$HiddHTML="$HotLinkURL"+"HiddD.png"
+		$diamond_int_D = $HiddD
+		$diamond_int_count = $Hidd
+		GOSUB name=diamond_int
+		
+		$HiddHTML="$HotLinkURL"+"HiddD" + $diamond_int_str + ".png"
 	CASE $Hidd=0
 		$HiddLeft= $HiddB1
 		$HiddHTML=""
@@ -1487,7 +1544,11 @@ BEGINCASE #Type
 		$TwenHTML="$HotLinkURL"+"TwenE.png"
 	CASE $Twen>=$TwenD
 		$TwenLeft = 0
-		$TwenHTML="$HotLinkURL"+"TwenD.png"
+		$diamond_int_D = $TwenD
+		$diamond_int_count = $Twen
+		GOSUB name=diamond_int
+		
+		$TwenHTML="$HotLinkURL"+"TwenD" + $diamond_int_str + ".png"
 	CASE $Twen=0
 		$TwenLeft= $TwenB1
 		$TwenHTML=""
@@ -1518,7 +1579,11 @@ BEGINCASE #Type
 		$UndeHTML="$HotLinkURL"+"UndeE.png"
 	CASE $Unde>=$UndeD
 		$UndeLeft = 0
-		$UndeHTML="$HotLinkURL"+"UndeD.png"
+		$diamond_int_D = $UndeD
+		$diamond_int_count = $Unde
+		GOSUB name=diamond_int
+		
+		$UndeHTML="$HotLinkURL"+"UndeD" + $diamond_int_str + ".png"
 	CASE $Unde=0
 		$UndeLeft= $UndeB1
 		$UndeHTML=""
@@ -1580,7 +1645,11 @@ BEGINCASE #Type
 		$HostHTML="$HotLinkURL"+"HostE.png"
 	CASE $Host>=$HostD
 		$HostLeft = 0
-		$HostHTML="$HotLinkURL"+"HostD.png"
+		$diamond_int_D = $HostD
+		$diamond_int_count = $Host
+		GOSUB name=diamond_int
+		
+		$HostHTML="$HotLinkURL"+"HostD" + $diamond_int_str + ".png"
 	CASE $Host=0
 		$HostLeft= $HostB1
 		$HostHTML=""
@@ -1611,7 +1680,11 @@ BEGINCASE #Type
 		$ConsHTML="$HotLinkURL"+"ConsE.png"
 	CASE $Cons>=$ConsD
 		$ConsLeft = 0
-		$ConsHTML="$HotLinkURL"+"ConsD.png"
+		$diamond_int_D = $ConsD
+		$diamond_int_count = $Cons
+		GOSUB name=diamond_int
+		
+		$ConsHTML="$HotLinkURL"+"ConsD" + $diamond_int_str + ".png"
 	CASE $Cons=0
 		$ConsLeft= $ConsB1
 		$ConsHTML=""
@@ -1642,7 +1715,11 @@ BEGINCASE #Type
 		$GeocHTML="$HotLinkURL"+"GGeocE.png"
 	CASE $Geoc>=$GeocD
 		$GeocLeft = 0
-		$GeocHTML="$HotLinkURL"+"GGeocD.png"
+		$diamond_int_D = $GeocD
+		$diamond_int_count = $Geoc
+		GOSUB name=diamond_int
+		
+		$GeocHTML="$HotLinkURL"+"GGeocD" + $diamond_int_str + ".png"
 	CASE $Geoc=0
 		$GeocLeft= $GeocB1
 		$GeocHTML=""
@@ -1673,7 +1750,12 @@ BEGINCASE #Type
 		$DistHTML="$HotLinkURL"+"DistE.png"
 	CASE $Dist>=$DistD
 		$DistLeft = 0
-		$DistHTML="$HotLinkURL"+"DistD.png"
+		
+		$diamond_int_D = $DistD
+		$diamond_int_count = $Dist
+		GOSUB name=diamond_int
+		
+		$DistHTML="$HotLinkURL"+"DistD" + $diamond_int_str + ".png"
 	CASE $Dist=0
 		$DistLeft= $DistB1
 		$DistHTML=""
@@ -1766,7 +1848,11 @@ BEGINCASE #Type
 		$TravHTML="$HotLinkURL"+"TravE.png"
 	CASE $Trav>=$TravD
 		$TravLeft = 0
-		$TravHTML="$HotLinkURL"+"TravD.png"
+		$diamond_int_D = $TravD
+		$diamond_int_count = $Trav
+		GOSUB name=diamond_int
+		
+		$TravHTML="$HotLinkURL"+"TravD" + $diamond_int_str + ".png"
 	CASE $Trav=0
 		$TravLeft= $TravB1
 		$TravHTML=""
@@ -1797,7 +1883,11 @@ BEGINCASE #Type
 		$CoinHTML="$HotLinkURL"+"CoinE.png"
 	CASE $Coin>=$CoinD
 		$CoinLeft = 0
-		$CoinHTML="$HotLinkURL"+"CoinD.png"
+		$diamond_int_D = $CoinD
+		$diamond_int_count = $Coin
+		GOSUB name=diamond_int
+		
+		$CoinHTML="$HotLinkURL"+"CoinD" + $diamond_int_str + ".png"
 	CASE $Coin=0
 		$CoinLeft= $CoinB1
 		$CoinHTML=""
@@ -1827,8 +1917,12 @@ BEGINCASE #Type
 		$WritLeft = $WritD
 		$WritHTML="$HotLinkURL"+"WritE.png"
 	CASE $Writ>=$WritD
+		$diamond_int_D = $WritD
+		$diamond_int_count = $Writ
+		GOSUB name=diamond_int
+		
 		$WritLeft = 0
-		$WritHTML="$HotLinkURL"+"WritD.png"
+		$WritHTML="$HotLinkURL"+"WritD" + $diamond_int_str + ".png"
 	CASE $Writ=0
 		$WritLeft= $WritB1
 		$WritHTML=""
@@ -1859,7 +1953,12 @@ BEGINCASE #Type
 		$DifiHTML="$HotLinkURL"+"DifiE.png"
 	CASE $Difi>=$DifiD
 		$DifiLeft = 0
-		$DifiHTML="$HotLinkURL"+"DifiD.png"
+		
+		$diamond_int_D = $DifiD
+		$diamond_int_count = $Difi
+		GOSUB name=diamond_int
+		
+		$DifiHTML="$HotLinkURL"+"DifiD" + $diamond_int_str + ".png"
 	CASE $Difi=0
 		$DifiLeft= $DifiB1
 		$DifiHTML=""
@@ -1890,7 +1989,11 @@ BEGINCASE #Type
 		$TerrHTML="$HotLinkURL"+"TerrE.png"
 	CASE $Terr>=$TerrD
 		$TerrLeft = 0
-		$TerrHTML="$HotLinkURL"+"TerrD.png"
+		$diamond_int_D = $TerrD
+		$diamond_int_count = $Terr
+		GOSUB name=diamond_int
+		
+		$TerrHTML="$HotLinkURL"+"TerrD" + $diamond_int_str + ".png"
 	CASE $Terr=0
 		$TerrLeft= $TerrB1
 		$TerrHTML=""
@@ -1921,7 +2024,11 @@ BEGINCASE #Type
 		$NighHTML="$HotLinkURL"+"NighE.png"
 	CASE $Nigh>=$NighD
 		$NighLeft = 0
-		$NighHTML="$HotLinkURL"+"NighD.png"
+		$diamond_int_D = $NighD
+		$diamond_int_count = $Nigh
+		GOSUB name=diamond_int
+		
+		$NighHTML="$HotLinkURL"+"NighD" + $diamond_int_str + ".png"
 	CASE $Nigh=0
 		$NighLeft= $NighB1
 		$NighHTML=""
@@ -1952,7 +2059,11 @@ BEGINCASE #Type
 		$VeteHTML="$HotLinkURL"+"VeteE.png"
 	CASE $Vete>=$VeteD
 		$VeteLeft = 0
-		$VeteHTML="$HotLinkURL"+"VeteD.png"
+		$diamond_int_D = $VeteD
+		$diamond_int_count = $Vete
+		GOSUB name=diamond_int
+		
+		$VeteHTML="$HotLinkURL"+"VeteD" + $diamond_int_str + ".png"
 	CASE $Vete=0
 		$VeteLeft= $VeteB1
 		$VeteHTML=""
@@ -1984,7 +2095,11 @@ BEGINCASE #Type
 		$FavoHTML="$HotLinkURL"+"FavoE.png"
 	CASE $Favo>=$FavoD
 		$FavoLeft = 0
-		$FavoHTML="$HotLinkURL"+"FavoD.png"
+		$diamond_int_D = $FavoD
+		$diamond_int_count = $Favo
+		GOSUB name=diamond_int
+		
+		$FavoHTML="$HotLinkURL"+"FavoD" + $diamond_int_str + ".png"
 	CASE $Favo=0
 		$FavoLeft= $FavoB1
 		$FavoHTML=""
@@ -2015,6 +2130,10 @@ BEGINCASE #Type
 		$PhotHTML="$HotLinkURL"+"PhotE.png"
 	CASE $Phot>=$PhotD
 		$PhotLeft = 0
+		$diamond_int_D = $PhotD
+		$diamond_int_count = $Phot
+		GOSUB name=diamond_int
+		
 		$PhotHTML="$HotLinkURL"+"PhotD.png"
 	CASE $Phot=0
 		$PhotLeft= $PhotB1
