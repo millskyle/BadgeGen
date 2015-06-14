@@ -609,7 +609,7 @@ BEGINSUB name=diamond_int
 		$TMPN=9
 	ENDIF
 	$diamond_int_str = numtostr($TMPN)
-	IF $TMPN=0
+	IF $TMPN=0 or $TMPN=1
 	$diamond_int_str=""
 	ENDIF
 	$diamond_int_count = 0
