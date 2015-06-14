@@ -1,5 +1,5 @@
 #*******************************************
-# MacVersion = 3.2.15
+# MacVersion = 3.2.16
 # MacDescription = Generates badges based on your geocaching accomplishments.
 # MacAuthor = ky.m.guy
 # MacFileName = BadgeGen.gsk
@@ -14,6 +14,7 @@
 #-Output CSS modernized
 #-Test run of Nx diamond badges added for 5/5 badge.
 #-Giga events now counted in Mega event total.
+#-Hosting a giga event counts toward hosted events
 
 
 
@@ -578,7 +579,7 @@ BEGINSUB name=Counter
 	GOSUB name="RefreshPlaced"
 	$Favo = Val(Sqlite("sql","select sum(favpoints) from caches where isowner"))
 	SHOWSTATUS msg="Counting Hosted Events" top=10 Left=10
-	$CountTemp = Sqlite("sql","Select count(distinct Code) from caches where IsOwner AND (cachetype='E' OR cachetype='Z' OR cachetype='C')")
+	$CountTemp = Sqlite("sql","Select count(distinct Code) from caches where IsOwner AND (cachetype='E' OR cachetype='Z' OR cachetype='C' OR cachetype='J')")
 	$Host = Val($CountTemp)
 
 	SHOWSTATUS msg="Determining other hidden cache numbers" top=10 Left=10
