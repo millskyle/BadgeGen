@@ -1,5 +1,5 @@
 #*******************************************
-# MacVersion = 3.2.16
+# MacVersion = 3.2.17
 # MacDescription = Generates badges based on your geocaching accomplishments.
 # MacAuthor = ky.m.guy
 # MacFileName = BadgeGen.gsk
@@ -15,6 +15,7 @@
 #-Test run of Nx diamond badges added for 5/5 badge.
 #-Giga events now counted in Mega event total.
 #-Hosting a giga event counts toward hosted events
+#-Fix with Most Types in a Day calculation (http://gsak.net/board/index.php?showtopic=26156&view=findpost&p=197414)
 
 
 
@@ -25,7 +26,7 @@ ENDSUB
 
 TIMER status=on
 $Version = "V" + MacHeader("MacVersion")
-$Version = GetUrl("http://badgegen.com/MacroFiles/CurrentReleaseVersion.php") ##Uncomment to hide 'New Version Banner'
+#$Version = GetUrl("http://badgegen.com/MacroFiles/CurrentReleaseVersion.php") ##Uncomment to hide 'New Version Banner'
 VERCHECK Version=8.4.0.0 (please update GSAK to version 8.4.0 to run this macro.)
 
 
@@ -530,7 +531,7 @@ BEGINSUB name=Counter
 	$Mont = Val(Sqlite("sql","SELECT count(distinct substr(PlacedDate,1,7)) from Caches where Code in (Select lParent from Logs where g_foundlog(lType) AND lIsOwner)"))
 	$Cale = Val(Sqlite("sql","select count(distinct substr(g_gcDate(lDate,lTime),6,5)) from logs where lisowner and g_foundlog(ltype) and NOT lParent in(select code from caches where CacheType='G' or CacheType='Y')"))
 	$Vete = Val(Sqlite("sql","select count(distinct substr(g_gcDate(lDate,lTime),1,4)) from logs where lisowner and g_foundlog(ltype) and NOT lParent in(select code from caches where CacheType='G' or CacheType='Y')"))
-	$Type = Val(Sqlite("sql","SELECT max(types) FROM ( SELECT count(distinct c.CacheType) types, l.lDate FROM caches c INNER JOIN Logs l ON c.code=l.lParent WHERE 1=1 AND l.lIsowner AND g_foundlog(l.ltype) AND c.CacheType not in ('G','Y') GROUP BY l.lDate ORDER BY types desc )"))
+	$Type = Val(Sqlite("sql","SELECT max(types) FROM ( SELECT count(distinct c.CacheType) types, l.lDate FROM caches c INNER JOIN Logs l ON c.code=l.lParent WHERE 1=1 AND l.lIsowner AND g_foundlog(l.ltype) AND c.CacheType not in ('G','Y') GROUP BY g_gcDate(l.lDate,l.lTime) ORDER BY types desc )"))
 
 	#!~!~!
 	##Matrix completions
@@ -602,6 +603,23 @@ ENDSUB #name=Counter
 
 #------------------------------------------------------------------------------------------------------------------------------------------
 
+BEGINSUB name=diamond_int
+	$TMPN=INT($diamond_int_count/$diamond_int_D)
+	IF $TMPN>9
+		$TMPN=9
+	ENDIF
+	$diamond_int_str = numtostr($TMPN)
+	IF $TMPN=0
+	$diamond_int_str=""
+	ENDIF
+	$diamond_int_count = 0
+	$diamond_int_D = 0
+ENDSUB #name=diamond_int
+
+
+
+
+
 BEGINSUB name=Assignment
 	BEGINCASE #Trad
 	CASE $Trad>=$TradB1 AND $Trad<=$TradB2
@@ -627,10 +645,15 @@ BEGINSUB name=Assignment
 		$TradHTML="$HotLinkURL"+"TradE.png"
 	CASE $Trad>=$TradD
 		$TradLeft = 0
-		$TradHTML="$HotLinkURL"+"TradD.png"
+		
+		$diamond_int_D = $TradD
+		$diamond_int_count = $Trad
+		GOSUB name=diamond_int
+		$TradHTML="$HotLinkURL"+"TradD" + $diamond_int_str + ".png"
 	CASE $Trad=0
 		$TradLeft= $TradB1
 		$TradHTML=""
+		
 	OTHERWISE
 		$TradLeft = $TradB1 - $Trad
 	ENDCASE #Trad
@@ -660,7 +683,10 @@ BEGINSUB name=Assignment
 		$MultHTML="$HotLinkURL"+"MultE.png"
 	CASE $Mult>=$MultD
 		$MultLeft = 0
-		$MultHTML="$HotLinkURL"+"MultD.png"
+		$diamond_int_D = $MultD
+		$diamond_int_count = $Mult
+		GOSUB name=diamond_int
+		$MultHTML="$HotLinkURL"+"MultD" + $diamond_int_str + ".png"
 	CASE $Mult=0
 		$MultLeft= $MultB1
 		$MultHTML=""
@@ -693,7 +719,10 @@ BEGINSUB name=Assignment
 		$VirtHTML="$HotLinkURL"+"VirtE.png"
 	CASE $Virt>=$VirtD
 		$VirtLeft = 0
-		$VirtHTML="$HotLinkURL"+"VirtD.png"
+		$diamond_int_D = $VirtD
+		$diamond_int_count = $Virt
+		GOSUB name=diamond_int
+		$VirtHTML="$HotLinkURL"+"VirtD" + $diamond_int_str + ".png"
 	CASE $Virt=0
 		$VirtLeft= $VirtB1
 		$VirtHTML=""
@@ -726,7 +755,10 @@ BEGINSUB name=Assignment
 		$MystHTML="$HotLinkURL"+"MystE.png"
 	CASE $Myst>=$MystD
 		$MystLeft = 0
-		$MystHTML="$HotLinkURL"+"MystD.png"
+		$diamond_int_D = $MystD
+		$diamond_int_count = $Myst
+		GOSUB name=diamond_int
+		$MystHTML="$HotLinkURL"+"MystD" + $diamond_int_str + ".png"
 	CASE $Myst=0
 		$MystLeft= $MystB1
 		$MystHTML=""
@@ -1287,17 +1319,12 @@ BEGINCASE #Type
 		$FiveHTML="$HotLinkURL"+"FiveE.png"
 	CASE $Five>=$FiveD
 		$FiveLeft = 0
-		$TMPN=INT($Five/$FiveD)
-		IF $TMPN>9
-			$TMPN=9
-	    ENDIF
-		$TMPS = numtostr($TMPN)
-		IF $TMPN=0
-		  $TMPS=""
-		ENDIF
-		$FiveHTML="$HotLinkURL"+"FiveD" + $TMPS + ".png"
-		#$FiveHTML="$HotLinkURL"+"FiveD.png"
-		pause msg="$fiveHtml"
+		
+		$diamond_int_D = $FiveD
+		$diamond_int_count = $Five
+		GOSUB name=diamond_int
+		$FiveHTML="$HotLinkURL"+"FiveD" + $diamond_int_str + ".png"
+		
 	CASE $Five=0
 		$FiveLeft= $FiveB1
 		$FiveHTML=""
@@ -4787,6 +4814,9 @@ BEGINSUB name=VarDec
   DECLARE VAR=$MONTL TYPE=STRING
 
  DECLARE VAR=$COLORTABLE TYPE=STRING
+ DECLARE VAR=$diamond_int_count TYPE=numeric
+ DECLARE VAR=$diamond_int_D type=numeric
+ DECLARE VAR=$diamond_int_str type=string
 
 	OPTION Explicit=Off
 
