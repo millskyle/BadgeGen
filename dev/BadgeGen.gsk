@@ -3614,63 +3614,48 @@ BEGINSUB name=SortBadges
 		$HTMLCode= $Dataline2
 		$datanumber1=$datanumber1+1
 	ENDWHILE
-
 	
-$COL_L_D = "#" 
-$COL_L_E = "#" 
-$COL_L_SA = "#" 
-$COL_L_R = "#" 
-$COL_L_P = "#" 
-$COL_L_S = "#" 
-$COL_L_B = "#" 
 
-$COL_D_D = "#" 
-$COL_D_E = "#" 
-$COL_D_SA = "#" 
-$COL_D_R = "#" 
-$COL_D_P = "#" 
-$COL_D_S = "#" 
-$COL_D_B = "#" 
 	
 	
 	IF $MultipleLines
 		IF  $DatalineD <>""
-			$DatalineD = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:#EDFDFF;' >" + $DatalineD + "</div><br>"
+			$DatalineD = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightD;' >" + $DatalineD + "</div><br>"
 		ELSE
 			$DatalineD= ""
 		ENDIF
 		IF  $DatalineE <>""
-			$DatalineE = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:#D6FFE8;' >" + $DatalineE + "</div><br>"
+			$DatalineE = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightE;' >" + $DatalineE + "</div><br>"
 		ELSE
 			$DatalineE= ""
 		ENDIF
 		IF  $DatalineA <>""
-			$DatalineA = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:#D6D9FF;' >" + $DatalineA + "</div><br>"
+			$DatalineA = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightSA;' >" + $DatalineA + "</div><br>"
 		ELSE
 			$DatalineA= ""
 		ENDIF
 		IF  $DatalineR <>""
-			$DatalineR = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:#FFD6D6;' >" + $DatalineR + "</div><br>"
+			$DatalineR = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightR;' >" + $DatalineR + "</div><br>"
 		ELSE
 			$DatalineR= ""
 		ENDIF
 		IF  $DatalineP <>""
-			$DatalineP = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:#f4f5f5;' >" + $DatalineP + "</div><br>"
+			$DatalineP = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightP;' >" + $DatalineP + "</div><br>"
 		ELSE
 			$DatalineP= ""
 		ENDIF
 		IF  $DatalineG <>""
-			$DatalineG = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:#f6efc9;' >" + $DatalineG + "</div><br>"
+			$DatalineG = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightG;' >" + $DatalineG + "</div><br>"
 		ELSE
 			$DatalineG= ""
 		ENDIF
 		IF  $DatalineS <>""
-			$DatalineS ="<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:#cecfd2;' >" +  $DatalineS + "</div><br>"
+			$DatalineS ="<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightS;' >" +  $DatalineS + "</div><br>"
 		ELSE
 			$DatalineS= ""
 		ENDIF
 		IF  $DatalineB <>""
-			$DatalineB = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:#f0e1d3;' >" + $DatalineB + "</div><br>"
+			$DatalineB = "<div style='width:80%;margin:2px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightB;' >" + $DatalineB + "</div><br>"
 		ELSE
 			$DatalineB= ""
 		ENDIF
@@ -4949,8 +4934,30 @@ BEGINSUB name=VarDec
   DECLARE VAR=$TRAVL TYPE=STRING
   DECLARE VAR=$COINL TYPE=STRING
   DECLARE VAR=$MONTL TYPE=STRING
+  
+  #colours
+  DECLARE VAR=$ColorLightD TYPE=STRING	
+  DECLARE VAR=$ColorLightE TYPE=STRING	
+  DECLARE VAR=$ColorLightSA TYPE=STRING	
+  DECLARE VAR=$ColorLightR TYPE=STRING	
+  DECLARE VAR=$ColorLightP TYPE=STRING	
+  DECLARE VAR=$ColorLightG TYPE=STRING	
+  DECLARE VAR=$ColorLightS TYPE=STRING	
+  DECLARE VAR=$ColorLightB TYPE=STRING	
 
- DECLARE VAR=$COLORTABLE TYPE=STRING
+  DECLARE VAR=$ColorDarkD TYPE=STRING	
+  DECLARE VAR=$ColorDarkE TYPE=STRING	 
+  DECLARE VAR=$ColorDarkSA TYPE=STRING	
+  DECLARE VAR=$ColorDarkR TYPE=STRING	
+  DECLARE VAR=$ColorDarkP TYPE=STRING	
+  DECLARE VAR=$ColorDarkG TYPE=STRING	
+  DECLARE VAR=$ColorDarkS TYPE=STRING	
+  DECLARE VAR=$ColorDarkB TYPE=STRING		
+
+ DECLARE VAR=$TABLECOLOR TYPE=STRING
+ 
+ 
+ 
  DECLARE VAR=$diamond_int_count TYPE=numeric
  DECLARE VAR=$diamond_int_D type=numeric
  DECLARE VAR=$diamond_int_str type=string
@@ -5200,6 +5207,28 @@ PSAyNTAw
 	$timer = 0
 	$TotalStateBadges=0
 	$UndeString="0"
+	
+	$ColorLightD = "EDFDFF" 
+	$ColorLightE = "D6FFE8" 
+	$ColorLightSA = "D6D9FF" 
+	$ColorLightR = "FFD6D6" 
+	$ColorLightP = "f4f5f5" 
+	$ColorLightG = "f6efc9"
+	$ColorLightS = "cecfd2" 
+	$ColorLightB = "f0e1d3" 
+
+	$ColorDarkD = "CCCCFF" 
+	$ColorDarkE = "CCFFCC" 
+	$ColorDarkSA = "9999FF" 
+	$ColorDarkR = "FFCCCC" 
+	$ColorDarkP = "EEEEEE" 
+	$ColorDarkG = "f6efAA"
+	$ColorDarkS = "aaaaaa" 
+	$ColorDarkB = "d0c1b3" 
+	
+    $TABLECOLOR="CDE2CB"
+	
+	
 	#$Units = SysInfo("Distance")
 	$centre="$24$2$26$2$23"
 	$distunits="m"
@@ -5333,7 +5362,7 @@ BEGINSUB Name=MoreInfo
 
 	GOSUB name=report                     # test database
 	$data = Sqlite("open",$database)
-	$COLORTABLE="CDE2CB"
+
 	$datanumber1=2
 	
 	
@@ -5371,15 +5400,15 @@ BEGINSUB Name=MoreInfo
 			#MSGOK msg=$DataIcon
 			$alt = Substr($DataIcon,$dataStart-10 ,$dataStart-7) #missing lines
 			BEGINCASE
-				$DatalineHTML  = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$COLORTABLE; border:5px solid #$COLORTABLE; border-radius:7px; " + $_quote + ">"
-				$DatalineHTMLB = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$COLORTABLE; border:5px solid #$COLORTABLE; border-radius:7px; " + $_quote + ">"
-				$DatalineHTMLS = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$COLORTABLE; border:5px solid #$COLORTABLE; border-radius:7px; " + $_quote + ">"
-				$DatalineHTMLG = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$COLORTABLE; border:5px solid #$COLORTABLE; border-radius:7px; " + $_quote + ">"
-				$DatalineHTMLP = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$COLORTABLE; border:5px solid #$COLORTABLE; border-radius:7px; " + $_quote + ">"
-				$DatalineHTMLR = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$COLORTABLE; border:5px solid #$COLORTABLE; border-radius:7px; " + $_quote + ">"
-				$DatalineHTMLA = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$COLORTABLE; border:5px solid #$COLORTABLE; border-radius:7px; " + $_quote + ">"
-				$DatalineHTMLE = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$COLORTABLE; border:5px solid #$COLORTABLE; border-radius:7px; " + $_quote + ">"
-				$DatalineHTMLD = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$COLORTABLE; border:5px solid #$COLORTABLE; border-radius:7px; " + $_quote + ">"
+				$DatalineHTML  = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$TABLECOLOR; border:5px solid #$TABLECOLOR; border-radius:7px; " + $_quote + ">"
+				$DatalineHTMLB = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$TABLECOLOR; border:5px solid #$TABLECOLOR; border-radius:7px; " + $_quote + ">"
+				$DatalineHTMLS = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$TABLECOLOR; border:5px solid #$TABLECOLOR; border-radius:7px; " + $_quote + ">"
+				$DatalineHTMLG = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$TABLECOLOR; border:5px solid #$TABLECOLOR; border-radius:7px; " + $_quote + ">"
+				$DatalineHTMLP = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$TABLECOLOR; border:5px solid #$TABLECOLOR; border-radius:7px; " + $_quote + ">"
+				$DatalineHTMLR = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$TABLECOLOR; border:5px solid #$TABLECOLOR; border-radius:7px; " + $_quote + ">"
+				$DatalineHTMLA = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$TABLECOLOR; border:5px solid #$TABLECOLOR; border-radius:7px; " + $_quote + ">"
+				$DatalineHTMLE = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$TABLECOLOR; border:5px solid #$TABLECOLOR; border-radius:7px; " + $_quote + ">"
+				$DatalineHTMLD = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$TABLECOLOR; border:5px solid #$TABLECOLOR; border-radius:7px; " + $_quote + ">"
 				
 				
 
@@ -5392,11 +5421,11 @@ BEGINSUB Name=MoreInfo
 
 			CASE (Abs(val($datalinehave)) <  Abs(val($datalineB)) OR Abs(Val($datalinehave))=0)
 				$DatalineTemp=$DataIcon +"X.png"
-				$DatalineHTMLD ="<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$COLORTABLE; border:5px solid #$COLORTABLE; border-radius:7px; " + $_quote + ">"
+				$DatalineHTMLD ="<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$TABLECOLOR; border:5px solid #$TABLECOLOR; border-radius:7px; " + $_quote + ">"
 
 			CASE Abs(val($datalinehave)) >= Abs(val($datalineB)) and Abs(val($datalinehave)) < Abs(val($datalineS))
 				$DatalineTemp=$DataIcon + "B.png"                         #B
-				$DatalineHTMLB="<th style=" + $_Quote + "background: #$DARK; border:5px solid #$DARK; border-radius:7px; " + $_quote + " align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLB="<th style=" + $_Quote + "background: #$DARK; border:5px solid #$ColorDarkB; border-radius:7px; " + $_quote + " align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
 
 			CASE Abs(val($datalinehave )) >= Abs(val($datalineS)) and Abs(val($datalinehave)) < Abs(val($datalineG))
 				$DatalineTemp=$DataIcon + "S.png"                        #S
@@ -5429,7 +5458,7 @@ BEGINSUB Name=MoreInfo
 				$DatalineHTMLB="<th style=" + $_Quote + "background: #$LIGHT; border:5px solid #$LIGHT; border-radius:7px; " + $_Quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
 				$DatalineHTMLS="<th style=" + $_Quote + "background: #$LIGHT; border:5px solid #$LIGHT; border-radius:7px; " + $_Quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
 				$DatalineHTMLG="<th style=" + $_Quote + "background: #$LIGHT; border:5px solid #$LIGHT; border-radius:7px; " + $_Quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-		  	$DatalineHTMLP="<th style=" + $_Quote + "background: #$LIGHT; border:5px solid #$LIGHT; border-radius:7px; " + $_Quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+		  	    $DatalineHTMLP="<th style=" + $_Quote + "background: #$LIGHT; border:5px solid #$LIGHT; border-radius:7px; " + $_Quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
 				$DatalineHTMLR="<th style=" + $_Quote + "background: #$LIGHT; border:5px solid #$LIGHT; border-radius:7px; " + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
 				$DatalineHTMLA="<th style=" + $_Quote + "background: #$DARK; border:5px solid #$DARK; border-radius:7px; "  + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
 
@@ -5445,13 +5474,13 @@ BEGINSUB Name=MoreInfo
 
 			CASE Abs(val($datalinehave)) >= Abs(val($datalineD))
 				$DatalineTemp=$DataIcon + "D.png"                        #D
-				$DatalineHTMLB="<th style=" + $_Quote + "background: #FFFFB5; border:5px solid #FFFF57; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-				$DatalineHTMLS="<th style=" + $_Quote + "background: #FFFFB5; border:5px solid #FFFF57; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-				$DatalineHTMLG="<th style=" + $_Quote + "background: #FFFFB5; border:5px solid #FFFF57; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-				$DatalineHTMLP="<th style=" + $_Quote + "background: #FFFFB5; border:5px solid #FFFF57; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-				$DatalineHTMLR="<th style=" + $_Quote + "background: #FFFFB5; border:5px solid #FFFF57; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-				$DatalineHTMLA="<th style=" + $_Quote + "background: #FFFFB5; border:5px solid #FFFF57; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-				$DatalineHTMLE="<th style=" + $_Quote + "background: #FFFFB5; border:5px solid #FFFF57; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLB="<th style=" + $_Quote + "background: #FFFF37; border:5px solid #FFFF37; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLS="<th style=" + $_Quote + "background: #FFFF37; border:5px solid #FFFF37; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLG="<th style=" + $_Quote + "background: #FFFF37; border:5px solid #FFFF37; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLP="<th style=" + $_Quote + "background: #FFFF37; border:5px solid #FFFF37; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLR="<th style=" + $_Quote + "background: #FFFF37; border:5px solid #FFFF37; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLA="<th style=" + $_Quote + "background: #FFFF37; border:5px solid #FFFF37; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLE="<th style=" + $_Quote + "background: #FFFF37; border:5px solid #FFFF37; border-radius:7px;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
 				$DatalineHTMLD="<th style=" + $_Quote + "background: #FFFF57; border:5px solid #FFFF57; border-radius:7px; " + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
 			ENDCASE
 
