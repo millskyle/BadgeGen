@@ -1,5 +1,5 @@
 #*******************************************
-# MacVersion = 3.2.17
+# MacVersion = 3.3.0
 # MacDescription = Generates badges based on your geocaching accomplishments.
 # MacAuthor = ky.m.guy
 # MacFileName = BadgeGen.gsk
@@ -11,7 +11,7 @@
 #Changes:
 #-Removed geocoin ad as geocoins are long gone
 #-Elevation now uses built in elevation feature of GSAK.
-#-Output CSS modernized
+#-Output style improved...it was looking a bit old
 #-Test run of Nx diamond badges added for 5/5 badge.
 #-Giga events now counted in Mega event total.
 #-Hosting a giga event counts toward hosted events
@@ -5312,9 +5312,7 @@ PSAyNTAw
 	$TenyName = "The Lost & Found Cacher"
 	$BencName = "The Benchmarker"
 	$WaymName = "The Waymarker"
-	#!~!~!
 	$TypeName = "The Diverse Cacher"
-	#!~!~!
 	$MicrName = "The Micro Cacher"
 	$SmalName = "The Small Cacher"
 	$ReguName = "The Regular Cacher"
@@ -5358,9 +5356,7 @@ PSAyNTAw
 	$BencCODEALT ="$1$2$3$2$5$6$2 $HotlinkURL"+"BencP.png $2$5$20$2$BencAlt$2$5$28$2$BencAlt$2$23"
 	$WaymCODEALT ="$1$2$3$2$5$6$2 $HotlinkURL"+"WaymP.png $2$5$20$2$WaymAlt$2$5$28$2$WaymAlt$2$23"
 	$ApecCODEALT ="$1$2$3$2$5$6$2 $HotlinkURL"+"ApecP.png $2$5$20$2$ApecAlt$2$5$28$2$ApecAlt$2$23"
-	#!~!~!
 	$TypeCODEALT ="$1$2$3$2$5$6$2 $HotlinkURL"+"TypeP.png $2$5$20$2$TypeAlt$2$5$28$2$TypeAlt$2$23"
-	#!~!~!
 	$MicrCODEALT ="$1$2$3$2$5$6$2 $HotlinkURL"+"MicrP.png $2$5$20$2$MicrAlt$2$5$28$2$MicrAlt$2$23"
 	$SmalCODEALT ="$1$2$3$2$5$6$2 $HotlinkURL"+"SmalP.png $2$5$20$2$SmalAlt$2$5$28$2$SmalAlt$2$23"
 	$ReguCODEALT ="$1$2$3$2$5$6$2 $HotlinkURL"+"ReguP.png $2$5$20$2$ReguAlt$2$5$28$2$ReguAlt$2$23"
@@ -5415,9 +5411,6 @@ BEGINSUB Name=MoreInfo
 	$data = Sqlite("open",$database)
 
 	$datanumber1=2
-	
-	
-	
 	
 	
 	$Datalineheader="<tr>" + $_NewLine 
@@ -5478,8 +5471,6 @@ BEGINSUB Name=MoreInfo
 				$DatalineHTMLE = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$TABLECOLOR; border-radius:7px;width:9.1%;overflow:hidden; " + $_quote + ">"
 				$DatalineHTMLD = "<th align=" + $_Quote + "center" + $_Quote + "style=" + $_Quote + "background: #$TABLECOLOR; border-radius:7px;width:9.1%;overflow:hidden; " + $_quote + ">"
 				
-				
-
 			#If the badge is a country badge, an extra S isn't needed.
 			IF RegEx("country_",$DataIcon)
 				$extra_S = ""
@@ -5554,7 +5545,6 @@ BEGINSUB Name=MoreInfo
 
 			$dataicon = $datalinetemp
 
-
 			$DataIcon=replace(">"," ",$DataIcon)               # ste up to and Size to the icons
 			$DataIcon=Replace(" http://","http://",$DataIcon)
 			$Size="60"                      # size of icon
@@ -5586,7 +5576,6 @@ ENDSUB #name=MoreInfo
 
 
 BEGINSUB name=BeltHTMLMOD
-
 
 	$header2 = "<img src='http://www.gsak.net/bgv2/additional/moreinformationbelt.png' height='32px' />"
 
