@@ -5224,35 +5224,35 @@ PSAyNTAw
 	    $tmps = "background: -moz-linear-gradient(left,  rgba($gradient_seed,0) 0%, rgba($gradient_seed,0.12) 10%, rgba($gradient_seed,1) 50%, rgba($gradient_seed,0.12) 91%, rgba($gradient_seed,0) 100%); /* FF3.6+ */background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba($gradient_seed,0)), color-stop(10%,rgba($gradient_seed,0.12)), color-stop(50%,rgba($gradient_seed,1)), color-stop(91%,rgba($gradient_seed,0.12)), color-stop(100%,rgba($gradient_seed,0))); /* Chrome,Safari4+ */background: -webkit-linear-gradient(left,  rgba($gradient_seed,0) 0%,rgba($gradient_seed,0.12) 10%,rgba($gradient_seed,1) 50%,rgba($gradient_seed,0.12) 91%,rgba($gradient_seed,0) 100%); /* Chrome10+,Safari5.1+ */background: -o-linear-gradient(left,  rgba($gradient_seed,0) 0%,rgba($gradient_seed,0.12) 10%,rgba($gradient_seed,1) 50%,rgba($gradient_seed,0.12) 91%,rgba($gradient_seed,0) 100%); /* Opera 11.10+ */background: -ms-linear-gradient(left,  rgba($gradient_seed,0) 0%,rgba($gradient_seed,0.12) 10%,rgba($gradient_seed,1) 50%,rgba($gradient_seed,0.12) 91%,rgba($gradient_seed,0) 100%); /* IE10+ */background: linear-gradient(to right,  rgba($gradient_seed,0) 0%,rgba($gradient_seed,0.12) 10%,rgba($gradient_seed,1) 50%,rgba($gradient_seed,0.12) 91%,rgba($gradient_seed,0) 100%); /* W3C */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00edfdff', endColorstr='#00edfdff',GradientType=1 ); /* IE6-9 */"
 	ENDSUB
 	
-	$gradient_seed = "237,253,255"
+	$gradient_seed = "224,249,255"
 	GOSUB name=MakeGradient
 	$gradient_D = $tmps
 
-	$gradient_seed = "214,255,214"
+	$gradient_seed = "200,255,200"
 	GOSUB name=MakeGradient
 	$gradient_E = $tmps
  
- 	$gradient_seed = "214,214,255"
+ 	$gradient_seed = "200,200,255"
 	GOSUB name=MakeGradient
 	$gradient_Sa = $tmps
  
- 	$gradient_seed = "255,214,214"
+ 	$gradient_seed = "255,200,200"
 	GOSUB name=MakeGradient
 	$gradient_R = $tmps
  
- 	$gradient_seed = "244,244,244"
+ 	$gradient_seed = "223,223,223"
 	GOSUB name=MakeGradient
 	$gradient_P = $tmps
  
- 	$gradient_seed = "246,239,201"
+ 	$gradient_seed = "247,227,152"
 	GOSUB name=MakeGradient
 	$gradient_G = $tmps
  
- 	$gradient_seed = "206,207,210"
+ 	$gradient_seed = "200,200,200"
 	GOSUB name=MakeGradient
 	$gradient_S = $tmps
  
- 	$gradient_seed = "245,223,207"
+ 	$gradient_seed = "223,181,159"
 	GOSUB name=MakeGradient
 	$gradient_B = $tmps
  
@@ -5277,7 +5277,7 @@ PSAyNTAw
 	$ColorDarkS = "#aaaaaa" 
 	$ColorDarkB = "#d0c1b3" 
 	
-    $TABLECOLOR="CDE2CB"
+    $TABLECOLOR="e6e6e6"
 	
 	
 	#$Units = SysInfo("Distance")
@@ -5421,7 +5421,7 @@ BEGINSUB Name=MoreInfo
 	
 	
 	$Datalineheader="<tr>" + $_NewLine 
-	$Datalineheader=$Datalineheader  + "<th style=" + $_Quote + "background: #f0f0f0; border:5px solid #f0f0f0; border-radius:7px;width:9.1%;overflow:hidden; "+ $_Quote + " align=center> </th>" 
+	$Datalineheader=$Datalineheader  + "<th style=" + $_Quote + "background: #d2d2d2; border-radius:7px;width:9.1%;overflow:hidden; "+ $_Quote + " align=center> </th>" 
 	$Datalineheader=$Datalineheader + $_NewLine + "<th style=" + $_Quote + "background: #C3C3C3; border-radius:7px;width:9.1%;overflow:hidden; " + $_Quote + " align=center>Bronze</th>" 
 	$Datalineheader=$Datalineheader + $_NewLine + "<th style=" + $_Quote + "background: #C3C3C3; border-radius:7px;width:9.1%;overflow:hidden; " + $_Quote + " align=center>Silver</th>" 
 	$Datalineheader=$Datalineheader + $_NewLine + "<th style=" + $_Quote + "background: #C3C3C3; border-radius:7px;width:9.1%;overflow:hidden; " + $_Quote + " align=center>Gold</th>" 
@@ -5436,12 +5436,13 @@ BEGINSUB Name=MoreInfo
 
 	$HTMLcode=$HTMLcode + $_NewLine + "<br><span style='font-family:Sans-serif'>" + $_NewLine + "<Center>" + $_NewLine
 	$HTMLcode=$HTMLcode + "<div id='tglbuton' style='display:none'>" + $_NewLine + "</div>" + $_NewLine
-	$HTMLcode=$HTMLcode + "<span style='cursor:pointer;' onmousedown=  "+$_Quote+"  document.getElementById('genbutton').style.display = (getElementById('genbutton').style.display != 'none' ? 'none' : ''); $_Quote  >" + $_NewLine + "<img src='http://www.gsak.net/bgv2/additional/moreinformationbadge.png' height='32px' /></span>   <span style='cursor:pointer; border: 1px solid #000000' onmousedown= $_Quote var s=(getElementById('tglbuton').style.display != 'none' ? 'none' : ''); document.getElementById('genbutton').style.display=s; $_Quote >" + $_NewLine + "</span> " + $_NewLine
+	$HTMLcode=$HTMLcode + "<span style='cursor:pointer;' onmousedown=  "+$_Quote+"  document.getElementById('genbutton').style.display = (getElementById('genbutton').style.display != 'none' ? 'none' : ''); $_Quote  >" + $_NewLine + "<img src='http://www.gsak.net/bgv2/additional/moreinformationbadge.png' height='32px' /></span>   "
+	#$HTMLcode=$HTMLcode + "<span style='cursor:pointer; border: 1px solid #000000' onmousedown= $_Quote var s=(getElementById('tglbuton').style.display != 'none' ? 'none' : ''); document.getElementById('genbutton').style.display=s; $_Quote >" + $_NewLine + "</span> "
 	$HTMLcode=$HTMLcode + "<div id='genbutton' style='display:none'>" + $_NewLine
 	$HTMLcode=$HTMLcode + "<br><br><div style='padding:6px; width:70%; background: #c8ddc8; font-size: 11px; border-radius:5px; text-align: center;'>" + $_NewLine
 	$HTMLcode=$HTMLcode + "</a>Generated on $_Today with BadgeGen $Version </div><br><br>" + $_NewLine
-	#$HTMLcode=$HTMLcode + "<div style='width:90%;background-color:#f0f0f0; border-radius:20px; padding:3px;overflow:hidden;' >"  #Grey background Div
-	$HTMLcode=$HTMLcode + "<table border='0px'  bordercolor='#000000' width='100%' style='overflow:hidden; font-size:11pt' >"
+	$HTMLcode=$HTMLcode + "<div style='width:95%;background-color:#d2d2d2; border-radius:10px; padding:2px;overflow:hidden;' >"  #Grey background Div
+	$HTMLcode=$HTMLcode + "<table border='0px'  bordercolor='#000000' width='100%' style='overflow:hidden; font-size:10pt' >"
 	$HTMLcode=$HTMLcode + $Datalineheader
 
 
@@ -5541,14 +5542,14 @@ BEGINSUB Name=MoreInfo
 
 			CASE Abs(val($datalinehave)) >= Abs(val($datalineD))
 				$DatalineTemp=$DataIcon + "D.png"                        #D
-				$DatalineHTMLB="<th style=" + $_Quote + "background: #FFFF37;  border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-				$DatalineHTMLS="<th style=" + $_Quote + "background: #FFFF37;  border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-				$DatalineHTMLG="<th style=" + $_Quote + "background: #FFFF37;  border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-				$DatalineHTMLP="<th style=" + $_Quote + "background: #FFFF37;  border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-				$DatalineHTMLR="<th style=" + $_Quote + "background: #FFFF37;  border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-				$DatalineHTMLA="<th style=" + $_Quote + "background: #FFFF37;  border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-				$DatalineHTMLE="<th style=" + $_Quote + "background: #FFFF37;  border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
-				$DatalineHTMLD="<th style=" + $_Quote + "background: #FFFF57;  border-radius:7px;width:9.1%;overflow:hidden; " + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLB="<th style=" + $_Quote + "/*background: #$LIGHT;*/ $gradient_D  border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLS="<th style=" + $_Quote + "/*background: #$LIGHT;*/ $gradient_D  border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLG="<th style=" + $_Quote + "/*background: #$LIGHT;*/ $gradient_D  border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLP="<th style=" + $_Quote + "/*background: #$LIGHT;*/ $gradient_D  border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLR="<th style=" + $_Quote + "/*background: #$LIGHT;*/ $gradient_D  border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLA="<th style=" + $_Quote + "/*background: #$LIGHT;*/ $gradient_D  border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLE="<th style=" + $_Quote + "/*background: #$LIGHT;*/ $gradient_D border-radius:7px;width:9.1%;overflow:hidden;" + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
+				$DatalineHTMLD="<th style=" + $_Quote + "/*background: #$DARK;*/ $gradient_D  border-radius:7px;width:9.1%;overflow:hidden; " + $_quote + "align=" + $_Quote + "center" + $_Quote + ">"+$_NewLine
 			ENDCASE
 
 			$dataicon = $datalinetemp
@@ -5575,7 +5576,7 @@ BEGINSUB Name=MoreInfo
 	ENDWHILE
 	SHOWSTATUS msg="Generating 'More Information' table: " top=10 Left=10 width=500
 	$HTMLcode=$HTMLcode + "</table>"
-	#$HTMLcode=$HTMLcode + "</div>"
+	$HTMLcode=$HTMLcode + "</div>"
 	$HTMLcode=$HTMLcode + "<br><a href='http://www.badgegen.com/badges.html' target='_blank'><img src='http://www.gsak.net/bgv2/additional/evenmoreinformation.png'></a><br><br></span></div>"
 	IF $ShowBelt
 		GOSUB name="BeltHTMLMod"
