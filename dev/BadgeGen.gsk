@@ -3619,42 +3619,42 @@ BEGINSUB name=SortBadges
 	
 	IF $MultipleLines
 		IF  $DatalineD <>""
-			$DatalineD = "<div style='width:80%;margin:0px;padding:10px;border:0px;$tmps;background-color:$ColorLightD;' >" + $DatalineD + "</div>"
+			$DatalineD = "<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;/*background-color:$ColorLightD;*/  $gradient_D    ' >" + $DatalineD + "</div>"
 		ELSE
 			$DatalineD= ""
 		ENDIF
 		IF  $DatalineE <>""
-			$DatalineE = "<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightE;' >" + $DatalineE + "</div>"
+			$DatalineE = "<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;/*background-color:$ColorLightE;*/  $gradient_E   ' >" + $DatalineE + "</div>"
 		ELSE
 			$DatalineE= ""
 		ENDIF
 		IF  $DatalineA <>""
-			$DatalineA = "<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightSA;' >" + $DatalineA + "</div>"
+			$DatalineA = "<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;/*background-color:$ColorLightSA;*/  $gradient_SA   ' >" + $DatalineA + "</div>"
 		ELSE
 			$DatalineA= ""
 		ENDIF
 		IF  $DatalineR <>""
-			$DatalineR = "<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightR;' >" + $DatalineR + "</div>"
+			$DatalineR = "<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;/*background-color:$ColorLightR;*/ $gradient_R   ' >" + $DatalineR + "</div>"
 		ELSE
 			$DatalineR= ""
 		ENDIF
 		IF  $DatalineP <>""
-			$DatalineP = "<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightP;' >" + $DatalineP + "</div>"
+			$DatalineP = "<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;/*background-color:$ColorLightP;*/  $gradient_P   ' >" + $DatalineP + "</div>"
 		ELSE
 			$DatalineP= ""
 		ENDIF
 		IF  $DatalineG <>""
-			$DatalineG = "<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightG;' >" + $DatalineG + "</div>"
+			$DatalineG = "<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;/*background-color:$ColorLightG;*/  $gradient_G   ' >" + $DatalineG + "</div>"
 		ELSE
 			$DatalineG= ""
 		ENDIF
 		IF  $DatalineS <>""
-			$DatalineS ="<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightS;' >" +  $DatalineS + "</div>"
+			$DatalineS ="<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;/*background-color:$ColorLightS;*/  $gradient_S   ' >" +  $DatalineS + "</div>"
 		ELSE
 			$DatalineS= ""
 		ENDIF
 		IF  $DatalineB <>""
-			$DatalineB = "<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;background-color:$ColorLightB;' >" + $DatalineB + "</div>"
+			$DatalineB = "<div style='width:80%;margin:0px;padding:10px;border:0px;border-radius:10px;/*background-color:$ColorLightB;*/  $gradient_B   ' >" + $DatalineB + "</div>"
 		ELSE
 			$DatalineB= ""
 		ENDIF
@@ -4955,6 +4955,17 @@ BEGINSUB name=VarDec
 
  DECLARE VAR=$TABLECOLOR TYPE=STRING
  
+ DECLARE var=$gradient_seed TYPE=STRING
+
+	 DECLARE var=$gradient_D TYPE=STRING
+	 DECLARE var=$gradient_E TYPE=STRING
+	 DECLARE var=$gradient_Sa TYPE=STRING
+ 	 DECLARE var=$gradient_R TYPE=STRING
+ 	 DECLARE var=$gradient_P TYPE=STRING
+ 	 DECLARE var=$gradient_G TYPE=STRING
+	 DECLARE var=$gradient_S TYPE=STRING
+	 DECLARE var=$gradient_B TYPE=STRING
+ 
  
  
  DECLARE VAR=$diamond_int_count TYPE=numeric
@@ -5207,23 +5218,64 @@ PSAyNTAw
 	$TotalStateBadges=0
 	$UndeString="0"
 	
-	$ColorLightD = "EDFDFF" 
-	$ColorLightE = "D6FFE8" 
-	$ColorLightSA = "D6D9FF" 
-	$ColorLightR = "FFD6D6" 
-	$ColorLightP = "f4f5f5" 
-	$ColorLightG = "f6efc9"
-	$ColorLightS = "cecfd2" 
-	$ColorLightB = "f0e1d3" 
+	
+	
+	BEGINSUB name=MakeGradient
+	    $tmps = "background: -moz-linear-gradient(left,  rgba($gradient_seed,0) 0%, rgba($gradient_seed,0.12) 10%, rgba($gradient_seed,1) 50%, rgba($gradient_seed,0.12) 91%, rgba($gradient_seed,0) 100%); /* FF3.6+ */background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba($gradient_seed,0)), color-stop(10%,rgba($gradient_seed,0.12)), color-stop(50%,rgba($gradient_seed,1)), color-stop(91%,rgba($gradient_seed,0.12)), color-stop(100%,rgba($gradient_seed,0))); /* Chrome,Safari4+ */background: -webkit-linear-gradient(left,  rgba($gradient_seed,0) 0%,rgba($gradient_seed,0.12) 10%,rgba($gradient_seed,1) 50%,rgba($gradient_seed,0.12) 91%,rgba($gradient_seed,0) 100%); /* Chrome10+,Safari5.1+ */background: -o-linear-gradient(left,  rgba($gradient_seed,0) 0%,rgba($gradient_seed,0.12) 10%,rgba($gradient_seed,1) 50%,rgba($gradient_seed,0.12) 91%,rgba($gradient_seed,0) 100%); /* Opera 11.10+ */background: -ms-linear-gradient(left,  rgba($gradient_seed,0) 0%,rgba($gradient_seed,0.12) 10%,rgba($gradient_seed,1) 50%,rgba($gradient_seed,0.12) 91%,rgba($gradient_seed,0) 100%); /* IE10+ */background: linear-gradient(to right,  rgba($gradient_seed,0) 0%,rgba($gradient_seed,0.12) 10%,rgba($gradient_seed,1) 50%,rgba($gradient_seed,0.12) 91%,rgba($gradient_seed,0) 100%); /* W3C */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00edfdff', endColorstr='#00edfdff',GradientType=1 ); /* IE6-9 */"
+	ENDSUB
+	
+	$gradient_seed = "237,253,255"
+	GOSUB name=MakeGradient
+	$gradient_D = $tmps
 
-	$ColorDarkD = "CCCCFF" 
-	$ColorDarkE = "CCFFCC" 
-	$ColorDarkSA = "9999FF" 
-	$ColorDarkR = "FFCCCC" 
-	$ColorDarkP = "EEEEEE" 
-	$ColorDarkG = "f6efAA"
-	$ColorDarkS = "aaaaaa" 
-	$ColorDarkB = "d0c1b3" 
+	$gradient_seed = "214,255,214"
+	GOSUB name=MakeGradient
+	$gradient_E = $tmps
+ 
+ 	$gradient_seed = "214,214,255"
+	GOSUB name=MakeGradient
+	$gradient_Sa = $tmps
+ 
+ 	$gradient_seed = "255,214,214"
+	GOSUB name=MakeGradient
+	$gradient_R = $tmps
+ 
+ 	$gradient_seed = "244,244,244"
+	GOSUB name=MakeGradient
+	$gradient_P = $tmps
+ 
+ 	$gradient_seed = "246,239,201"
+	GOSUB name=MakeGradient
+	$gradient_G = $tmps
+ 
+ 	$gradient_seed = "206,207,210"
+	GOSUB name=MakeGradient
+	$gradient_S = $tmps
+ 
+ 	$gradient_seed = "245,223,207"
+	GOSUB name=MakeGradient
+	$gradient_B = $tmps
+ 
+ 
+
+ 
+	$ColorLightD = "#EDFDFF" 
+	$ColorLightE = "#D6FFE8" 
+	$ColorLightSA = "#D6D9FF" 
+	$ColorLightR = "#FFD6D6" 
+	$ColorLightP = "#f4f5f5" 
+	$ColorLightG = "#f6efc9"
+	$ColorLightS = "#cecfd2" 
+	$ColorLightB = "#f0e1d3" 
+
+	$ColorDarkD = "#CCCCFF" 
+	$ColorDarkE = "#CCFFCC" 
+	$ColorDarkSA = "#9999FF" 
+	$ColorDarkR = "#FFCCCC" 
+	$ColorDarkP = "#EEEEEE" 
+	$ColorDarkG = "#f6efAA"
+	$ColorDarkS = "#aaaaaa" 
+	$ColorDarkB = "#d0c1b3" 
 	
     $TABLECOLOR="CDE2CB"
 	
@@ -5388,7 +5440,7 @@ BEGINSUB Name=MoreInfo
 	$HTMLcode=$HTMLcode + "<div id='genbutton' style='display:none'>" + $_NewLine
 	$HTMLcode=$HTMLcode + "<br><br><div style='padding:6px; width:70%; background: #c8ddc8; font-size: 11px; border-radius:5px; text-align: center;'>" + $_NewLine
 	$HTMLcode=$HTMLcode + "</a>Generated on $_Today with BadgeGen $Version </div><br><br>" + $_NewLine
-	$HTMLcode=$HTMLcode + "<div style='width:90%;background-color:#f0f0f0; border-radius:20px; padding:3px;overflow:hidden;' >"
+	#$HTMLcode=$HTMLcode + "<div style='width:90%;background-color:#f0f0f0; border-radius:20px; padding:3px;overflow:hidden;' >"  #Grey background Div
 	$HTMLcode=$HTMLcode + "<table border='0px'  bordercolor='#000000' width='100%' style='overflow:hidden; font-size:11pt' >"
 	$HTMLcode=$HTMLcode + $Datalineheader
 
@@ -5522,7 +5574,9 @@ BEGINSUB Name=MoreInfo
 		$Datanumber1=$datanumber1+1                                   # next step
 	ENDWHILE
 	SHOWSTATUS msg="Generating 'More Information' table: " top=10 Left=10 width=500
-	$HTMLcode=$HTMLcode + "</table></div><br><a href='http://www.badgegen.com/badges.html' target='_blank'><img src='http://www.gsak.net/bgv2/additional/evenmoreinformation.png'></a><br><br></span></div>"
+	$HTMLcode=$HTMLcode + "</table>"
+	#$HTMLcode=$HTMLcode + "</div>"
+	$HTMLcode=$HTMLcode + "<br><a href='http://www.badgegen.com/badges.html' target='_blank'><img src='http://www.gsak.net/bgv2/additional/evenmoreinformation.png'></a><br><br></span></div>"
 	IF $ShowBelt
 		GOSUB name="BeltHTMLMod"
 	ENDIF
