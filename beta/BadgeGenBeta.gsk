@@ -4,18 +4,8 @@
 # MacAuthor = ky.m.guy
 # MacFileName = BadgeGenBeta.gsk
 # MacUrl = http://www.badgegen.com/
-# ForumThread = http://gsak.net/board/index.php?act=ST&f=39&t=14497
+# ForumThread = http://gsak.net/board/index.php?showtopic=23997
 #*******************************************
-
-
-#Changes:
-#-Removed geocoin ad as geocoins are long gone
-#-Elevation now uses built in elevation feature of GSAK.
-#-Output style improved...it was looking a bit old
-#-Test run of Nx diamond badges added for 5/5 badge.
-#-Giga events now counted in Mega event total.
-#-Hosting a giga event counts toward hosted events
-#-Fix with Most Types in a Day calculation (http://gsak.net/board/index.php?showtopic=26156&view=findpost&p=197414)
 
 
 

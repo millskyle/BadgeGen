@@ -18,6 +18,7 @@ I've skimmed through the past many months of posts, and made most of the changes
 
 [IMG]http://gsak.net/screenshots/cb95c469141ad9065ac165c0015c7c19.png[/IMG][IMG]http://gsak.net/screenshots/dc2cd573a62e57b63c82e870a3b673d3.png[/IMG]
 
+Also, I'm considering removing the option to not sort badges.  If you really don't want your badges sorted, speak now or forever hold your peace :).
  
  
 6) Now, if you achieve two (or more) times the Diamond requirement for [i]most[/i] badges, BadgeGen will now show a small integer "sticker" on the output badge (see [URL=http://gsak.net/board/index.php?showtopic=17930&view=findpost&p=223588]here[/URL] for the discussion).  Ironically, it does not yet work for the subject of the suggestion, "The Matrix Cacher".  A completely separate (and inherently more difficult) calculation needs to be done to implement this, and I need to think about it a bit more.  As of now, it works for up to 9x diamond, where appropriate.  If you exceed 9x diamond on something, please let me know as I want to congratulate you.  :P   
@@ -27,6 +28,7 @@ Some badges just do not make sense for this new feature (e.g. 2x diamond for the
 [IMG]http://gsak.net/bgv2/DifiD2.png[/IMG][IMG]http://gsak.net/bgv2/FiveD3.png[/IMG][IMG]http://gsak.net/bgv2/FavoD4.png[/IMG][IMG]http://gsak.net/bgv2/TradD9.png[/IMG]
 
 I'll admit I have not thoroughly tested this with all badges, so I suspect bugs. Please inform.
+
 
 
 
