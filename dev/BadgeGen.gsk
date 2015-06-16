@@ -2133,7 +2133,7 @@ BEGINCASE #Type
 		$diamond_int_count = $Phot
 		GOSUB name=diamond_int
 		
-		$PhotHTML="$HotLinkURL"+"PhotD.png"
+		$PhotHTML="$HotLinkURL"+"PhotD" + $diamond_int_str + ".png"
 	CASE $Phot=0
 		$PhotLeft= $PhotB1
 		$PhotHTML=""
