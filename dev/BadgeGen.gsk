@@ -1,5 +1,5 @@
 #*******************************************
-# MacVersion = 3.3.0 BETA
+# MacVersion = 3.3.0.01 BETA
 # MacDescription = Generates badges based on your geocaching accomplishments.
 # MacAuthor = ky.m.guy
 # MacFileName = BadgeGenBeta.gsk
@@ -358,7 +358,7 @@ BEGINSUB name="FIRSTRUN"
 		IF GetFile("$BadgeGenLastRunFile")<>$Version
 			$data = PutFile($BadgeGenLastRunFile,$Version)
 			SHOWSTATUS msg="First run setup initializing"
-			GCUPDATEUSERINFO
+			GCUPDATEUSERINFO UpdateMatching="N"
 			SHOWSTATUS mode=off
 		ENDIF
 	ENDIF
