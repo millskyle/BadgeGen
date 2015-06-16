@@ -9,6 +9,7 @@
 
 
 
+
 BEGINSUB name=DeclareTotalBadges
 	$TotalNumberofBadges = 44 #The total number of badges...not including *any* state badges.
 ENDSUB
@@ -3296,7 +3297,7 @@ BEGINSUB name=Belts
 	###
 	$condition = "1 point per gemstone badge (excluding country badges)"
 	$data_pass = "badges"
-	$comp = RegExCount("gsak.net[\/]bgv2[\/][A-z|a-z]*([R]|[S][a]|[E]|[D]).png",$HTMLCode)
+	$comp = RegExCount("gsak.net[\/]bgv2[\/][A-z|a-z]*([R]|[S][a]|[E]|[D2-9]).png",$HTMLCode)
 	$num_temp = $comp
 	IF $num_temp > 0
 		$completion_status = "p"
