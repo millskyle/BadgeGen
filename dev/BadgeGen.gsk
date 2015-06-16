@@ -516,6 +516,7 @@ BEGINSUB name=Counter
 	$Terr = Val(Sqlite("sql","select count(*) from Logs where g_foundlog(ltype) AND lParent in(Select code from caches where found and CacheType<>'G' and CacheType<>'Y' and Terrain='5') and lIsOwner"))
 	$Difi = Val(Sqlite("sql","select count(*) from Logs where g_foundlog(ltype) AND lParent in(Select code from caches where found and CacheType<>'G' and CacheType<>'Y' and Difficulty='5') and lIsOwner"))
 	$Matr = Val(Sqlite("sql","select count(*) from (select difficulty,terrain from caches where code in(select code from caches where code in(select lParent from logs where (g_foundlog(ltype) and lIsOwner)) and CacheType<>'Y' and CacheType<>'G' ) group by difficulty,terrain)"))
+	$Matr_loops = Val(Sqlite("sql","select min(loops) from (select count(*) loops from caches where code in(select code from caches where code in(select lParent from logs where (g_foundlog(ltype) and lIsOwner)) and CacheType<>'Y' and CacheType<>'G' ) group by difficulty,terrain)"))
 	$Geoc = Val(Sqlite("sql","select count(*) from Logs where g_foundlog(ltype) AND lParent in(Select code from caches where found and CacheType<>'Y' and CacheType<>'G') and lIsOwner"))
 	$homecoords = Replace(","," ",$homecoords) #Removes any commas from the home coordinates
 	$Dist = Round(Val(Sqlite("sql","Select max(g_Distance(" + Extract(GCalc($homecoords,"FormatDegrees"),";",1) + "," + Extract(GCalc($homecoords,"FormatDegrees"),";",2) + ",latitude,longitude,'K')) from caches where found and code in(select lParent from logs where lisowner AND g_FoundLog(lType))")),0)
@@ -1777,7 +1778,14 @@ BEGINCASE #Type
 		$MatrHTML="$HotLinkURL"+"MatrE.png"
 	CASE $Matr>=$MatrD
 		$MatrLeft = 0
-		$MatrHTML="$HotLinkURL"+"MatrD.png"
+		$tmps=numtostr($matr_loops)
+		IF $Matr_loops <=1
+		   $tmps=""
+		ENDIF
+		IF $matr_loops > 9
+		   $tmps="9"
+		ENDIF
+		$MatrHTML="$HotLinkURL"+"MatrD" + $tmps + ".png"
 	CASE $Matr=0
 		$MatrLeft= $MatrB1
 		$MatrHTML=""
