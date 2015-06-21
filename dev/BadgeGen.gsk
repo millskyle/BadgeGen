@@ -5238,7 +5238,7 @@ PSAyNTAw
 	GOSUB name=MakeGradient
 	$gradient_E = $tmps
  
- 	$gradient_seed = "200,200,255"
+ 	$gradient_seed = "201,224,255"
 	GOSUB name=MakeGradient
 	$gradient_Sa = $tmps
  
