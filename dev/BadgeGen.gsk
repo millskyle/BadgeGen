@@ -3108,7 +3108,11 @@ BEGINSUB name=CalculateStateBadge
 	         $dataflag=""
            IF $separateflags=TRUE      # turn the split display ON/OFF
            					 GOSUB  name=SortBadges #NEW ADDITION
-                     $dataflag = "<br><br><img src='http://www.gsak.net/bgv2/additional/flagbadges.png' /><br><br>"+ $HTMLCode +"<br>"  # put in a row
+                     $dataflag = "<br><br>"
+					 if $TotalStateBadges <> 0
+					    $dataflag =  $dataflag  + "<img src='http://www.gsak.net/bgv2/additional/flagbadges.png' />"
+				     endif
+				 	$dataflag =  $dataflag  + "<br><br>"+ $HTMLCode +"<br>"  # put in a row
                      $HTMLCode = ""  #reset $htmlcode to remove the flags from it
            ENDIF
   ##END TAYBEE's FLAG SORTING MODIFICATION:
