@@ -1,11 +1,12 @@
 #*******************************************
-# MacVersion = 3.3.0 BETA
+# MacVersion = 3.3.1 BETA
 # MacDescription = Generates badges based on your geocaching accomplishments.
 # MacAuthor = ky.m.guy
 # MacFileName = BadgeGenBeta.gsk
 # MacUrl = http://www.badgegen.com/
 # ForumThread = http://gsak.net/board/index.php?showtopic=23997
 #*******************************************
+
 
 
 
@@ -358,7 +359,7 @@ BEGINSUB name="FIRSTRUN"
 		IF GetFile("$BadgeGenLastRunFile")<>$Version
 			$data = PutFile($BadgeGenLastRunFile,$Version)
 			SHOWSTATUS msg="First run setup initializing"
-			GCUPDATEUSERINFO
+			GCUPDATEUSERINFO UpdateMatching="N"
 			SHOWSTATUS mode=off
 		ENDIF
 	ENDIF
@@ -437,10 +438,12 @@ BEGINSUB name=RUN
 	TIMER status=on
 	SHOWSTATUS msg="Preparing Databases" top=10 Left=10
 	GOSUB name=Tense
+	GOSUB name=CheckHideLevels
 	$Message="Determining Badges"
 	IF not($RANDOMVARR=1)
 		GOSUB name=Counter
 	ENDIF
+
 	GOSUB name=Assignment
 	GOSUB name=PrepareHTML
 	GOSUB name=Output
@@ -515,6 +518,7 @@ BEGINSUB name=Counter
 	$Terr = Val(Sqlite("sql","select count(*) from Logs where g_foundlog(ltype) AND lParent in(Select code from caches where found and CacheType<>'G' and CacheType<>'Y' and Terrain='5') and lIsOwner"))
 	$Difi = Val(Sqlite("sql","select count(*) from Logs where g_foundlog(ltype) AND lParent in(Select code from caches where found and CacheType<>'G' and CacheType<>'Y' and Difficulty='5') and lIsOwner"))
 	$Matr = Val(Sqlite("sql","select count(*) from (select difficulty,terrain from caches where code in(select code from caches where code in(select lParent from logs where (g_foundlog(ltype) and lIsOwner)) and CacheType<>'Y' and CacheType<>'G' ) group by difficulty,terrain)"))
+	$Matr_loops = Val(Sqlite("sql","select min(loops) from (select count(*) loops from caches where code in(select code from caches where code in(select lParent from logs where (g_foundlog(ltype) and lIsOwner)) and CacheType<>'Y' and CacheType<>'G' ) group by difficulty,terrain)"))
 	$Geoc = Val(Sqlite("sql","select count(*) from Logs where g_foundlog(ltype) AND lParent in(Select code from caches where found and CacheType<>'Y' and CacheType<>'G') and lIsOwner"))
 	$homecoords = Replace(","," ",$homecoords) #Removes any commas from the home coordinates
 	$Dist = Round(Val(Sqlite("sql","Select max(g_Distance(" + Extract(GCalc($homecoords,"FormatDegrees"),";",1) + "," + Extract(GCalc($homecoords,"FormatDegrees"),";",2) + ",latitude,longitude,'K')) from caches where found and code in(select lParent from logs where lisowner AND g_FoundLog(lType))")),0)
@@ -1776,7 +1780,14 @@ BEGINCASE #Type
 		$MatrHTML="$HotLinkURL"+"MatrE.png"
 	CASE $Matr>=$MatrD
 		$MatrLeft = 0
-		$MatrHTML="$HotLinkURL"+"MatrD.png"
+		$tmps=numtostr($matr_loops)
+		IF $Matr_loops <=1
+		   $tmps=""
+		ENDIF
+		IF $matr_loops > 9
+		   $tmps="9"
+		ENDIF
+		$MatrHTML="$HotLinkURL"+"MatrD" + $tmps + ".png"
 	CASE $Matr=0
 		$MatrLeft= $MatrB1
 		$MatrHTML=""
@@ -2124,7 +2135,7 @@ BEGINCASE #Type
 		$diamond_int_count = $Phot
 		GOSUB name=diamond_int
 		
-		$PhotHTML="$HotLinkURL"+"PhotD.png"
+		$PhotHTML="$HotLinkURL"+"PhotD" + $diamond_int_str + ".png"
 	CASE $Phot=0
 		$PhotLeft= $PhotB1
 		$PhotHTML=""
@@ -2199,12 +2210,7 @@ ENDSUB name=Assignment
 
 #------------------------------------------------------------------------------------------------------------------------------------------
 
-BEGINSUB name=PrepareHTML
-	SHOWSTATUS msg="Preparing HTML Code" top=10 Left=10
-	#	GOSUB name=Convert
-	GOSUB name=HoverText
-
-	#Check to see if user has chosen to hide any levels:
+BEGINSUB name=CheckHideLevels
 	BEGINCASE
 	CASE $Hide_Selection="Bronze"
 		$Hide_levels="Q"    #Q will never match regex
@@ -2231,6 +2237,15 @@ BEGINSUB name=PrepareHTML
 		$Hide_text="Only diamond badges are shown."
 		$Hide_levels="BSGPRaE"
 	ENDCASE
+ENDSUB # name=CheckHideLevels
+
+BEGINSUB name=PrepareHTML
+	SHOWSTATUS msg="Preparing HTML Code" top=10 Left=10
+	#	GOSUB name=Convert
+	GOSUB name=HoverText
+
+	#Check to see if user has chosen to hide any levels:
+
 
 	IF not($TradHTML="") AND $ShowType=TRUE
 		IF Not(RegEx(Left(Right($TradHTML,5),1),$Hide_levels))
@@ -3005,6 +3020,7 @@ BEGINSUB name=CalculateStateBadge
 			ENDIF
 			#Set the value of $Stat
 			$StatLeft_str = ""
+			$StatHTML=""
 			$Stat = $percentstate
 			#Determine which level of badge should be awarded and allocate image URL to $StatHTML
 			BEGINCASE #Stat
@@ -3036,7 +3052,6 @@ BEGINSUB name=CalculateStateBadge
 				$NoStateBadge=TRUE
 				$StatLeft_str = "> "
 				$StatLeft = 0
-				$StatHTML=""
 				$StatLevel="X"
 			ENDCASE #Stat
 
@@ -3062,7 +3077,7 @@ BEGINSUB name=CalculateStateBadge
 			#ENDIF
 			#	IF $NOSTATEBADGE=FALSE
 			#Build Badge HTML code if the badge should be awarded
-			#IF Not(RegEx(Left(Right($StatHTML,5),1),$Hide_levels))
+			IF Not(RegEx(Left(Right($StatHTML,5),1),$Hide_levels))
 			IF not($StatHTML="")
 				$StatCode=" $1$2$3$2$5$6$2$StatHTML$2$5$10$2$Size$2$5$15$2$Size$2$5$20$2$StatAlt$2$5$28$2$20$StatAlt$2$5$23$_NewLine"
 				$BADGENUMBER=$BADGENUMBER+1
@@ -3076,6 +3091,7 @@ BEGINSUB name=CalculateStateBadge
 			#ENDIF
 			#Increment Counter
 			$TotalStateBadges = $TotalStateBadges + 1
+			endif #2015-06-21-km
 			$Counter = $Counter + 1
 			$StatCode=""
 			$MaxCountry=""
@@ -3092,7 +3108,11 @@ BEGINSUB name=CalculateStateBadge
 	         $dataflag=""
            IF $separateflags=TRUE      # turn the split display ON/OFF
            					 GOSUB  name=SortBadges #NEW ADDITION
-                     $dataflag = "<br><br><img src='http://www.gsak.net/bgv2/additional/flagbadges.png' /><br><br>"+ $HTMLCode +"<br>"  # put in a row
+                     $dataflag = "<br><br>"
+					 if $TotalStateBadges <> 0
+					    $dataflag =  $dataflag  + "<img src='http://www.gsak.net/bgv2/additional/flagbadges.png' />"
+				     endif
+				 	$dataflag =  $dataflag  + "<br><br>"+ $HTMLCode +"<br>"  # put in a row
                      $HTMLCode = ""  #reset $htmlcode to remove the flags from it
            ENDIF
   ##END TAYBEE's FLAG SORTING MODIFICATION:
@@ -3296,7 +3316,7 @@ BEGINSUB name=Belts
 	###
 	$condition = "1 point per gemstone badge (excluding country badges)"
 	$data_pass = "badges"
-	$comp = RegExCount("gsak.net[\/]bgv2[\/][A-z|a-z]*([R]|[S][a]|[E]|[D]).png",$HTMLCode)
+	$comp = RegExCount("gsak.net[\/]bgv2[\/][A-z|a-z]*([R]|[S][a]|[E]|[D2-9]).png",$HTMLCode)
 	$num_temp = $comp
 	IF $num_temp > 0
 		$completion_status = "p"
@@ -5222,7 +5242,7 @@ PSAyNTAw
 	GOSUB name=MakeGradient
 	$gradient_E = $tmps
  
- 	$gradient_seed = "200,200,255"
+ 	$gradient_seed = "201,224,255"
 	GOSUB name=MakeGradient
 	$gradient_Sa = $tmps
  
