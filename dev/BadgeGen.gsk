@@ -2236,6 +2236,8 @@ BEGINSUB name=CheckHideLevels
 	CASE $Hide_Selection="Diamond"
 		$Hide_text="Only diamond badges are shown."
 		$Hide_levels="BSGPRaE"
+	OTHERWISE
+	    $Hide_levels=" "    
 	ENDCASE
 ENDSUB # name=CheckHideLevels
 
@@ -3077,6 +3079,7 @@ BEGINSUB name=CalculateStateBadge
 			#ENDIF
 			#	IF $NOSTATEBADGE=FALSE
 			#Build Badge HTML code if the badge should be awarded
+			IF Not($StatLevel="X")
 			IF Not(RegEx(Left(Right($StatHTML,5),1),$Hide_levels))
 			IF not($StatHTML="")
 				$StatCode=" $1$2$3$2$5$6$2$StatHTML$2$5$10$2$Size$2$5$15$2$Size$2$5$20$2$StatAlt$2$5$28$2$20$StatAlt$2$5$23$_NewLine"
@@ -3091,7 +3094,8 @@ BEGINSUB name=CalculateStateBadge
 			#ENDIF
 			#Increment Counter
 			$TotalStateBadges = $TotalStateBadges + 1
-			endif #2015-06-21-km
+			ENDIF #2015-06-21-km
+			ENDIF
 			$Counter = $Counter + 1
 			$StatCode=""
 			$MaxCountry=""
