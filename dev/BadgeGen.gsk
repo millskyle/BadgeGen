@@ -3105,6 +3105,7 @@ BEGINSUB name=CalculateStateBadge
 			$StatLevel=""
 			$NOSTATEBADGE=FALSE
 		ENDWHILE
+		$TotalNumberofBadges = $TotalNumberofBadges + $counter - ($TotalStateBadges + 1)
 	ENDIF
 
 
