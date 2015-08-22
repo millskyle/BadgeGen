@@ -1,5 +1,5 @@
 #*******************************************
-# MacVersion = 3.3.2 BETA
+# MacVersion = 3.3.4 BETA
 # MacDescription = Generates badges based on your geocaching accomplishments.
 # MacAuthor = ky.m.guy
 # MacFileName = BadgeGenBeta.gsk
@@ -3105,6 +3105,7 @@ BEGINSUB name=CalculateStateBadge
 			$StatLevel=""
 			$NOSTATEBADGE=FALSE
 		ENDWHILE
+		$TotalNumberofBadges = $TotalNumberofBadges + $counter - ($TotalStateBadges + 1)
 	ENDIF
 
 
@@ -3250,7 +3251,7 @@ BEGINSUB name=Belts
 	$data_pass = "fav. pts."
 	$comp = $favo
 	$num_temp = $comp * 0.1
-	IF $comp > 1
+	IF $comp >= 1
 		$completion_status = "p"
 	ENDIF
 	GOSUB name=update
