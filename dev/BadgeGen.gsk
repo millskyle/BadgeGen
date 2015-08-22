@@ -3251,7 +3251,7 @@ BEGINSUB name=Belts
 	$data_pass = "fav. pts."
 	$comp = $favo
 	$num_temp = $comp * 0.1
-	IF $comp > 1
+	IF $comp >= 1
 		$completion_status = "p"
 	ENDIF
 	GOSUB name=update
